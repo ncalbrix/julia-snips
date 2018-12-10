@@ -1,0 +1,5 @@
+Execute a Julia script within a Julia REPL with :
+    include("path/to/script.jl")
+
+Run a script from a shell with :
+    julia script.jl <args>
