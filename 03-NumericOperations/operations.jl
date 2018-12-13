@@ -59,4 +59,53 @@ println(f)
 
 #= They can also be applied to elements of different size (e.g
 matrix product) and to user-defined operators, without
-additional code.
+additional code. =#
+
+
+#= Numeric Comparisons
+Usual operators : ==, ≠ (or !=, typed \ne), <, ≤ (or <=, typed \le),
+>, ≥ (or >=, typed \ge)
+Floats are compared according to the IEEE standard, be carreful
+with NaNs =#
+
+println(NaN == NaN)
+println(NaN ≠ NaN)
+println(NaN > NaN)
+println(NaN < NaN)
+println([1, NaN] == [1, NaN])
+
+#= For dealing with special values such as NaN and Inf, it
+is recommended to use built-in functions : 
+isequal(a, b) that checks the IDENTITY,
+isfinite(a)
+isinf(a)
+isnan(a) =#
+
+println(isequal(NaN, NaN))
+println(isequal([1, NaN], [1, NaN]))
+
+
+#= Chained Comparisons
+In Julia, comparisons can be chained.
+This can be convenient for expressions like
+0 < x ≤ 1
+However, the order of comparisons is undefined. Therefore,
+if a comparison using an operation with side effects
+MUST be used, it is better to explicitely write all atomic
+comparisons, and not chained ones. =#
+
+g = 0.5
+h = 1.2
+
+println(0 < g ≤ 1)
+println(0 < h ≤ 1)
+
+#= Numerical conversion to a type T can be done with
+b = T(a)
+b = convert(T, a) =#
+
+#= Julia has a pannel of different functions for rounding,
+dividing, sign and abs, powers, logs, root, trigonometric
+and hyperbolic functions, in its core lib, see the docs.
+For more special functions (ζ function, sine and cosine
+integrals, etc.) see the SpecialFunctions.jl package. =#
